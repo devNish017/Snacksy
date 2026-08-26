@@ -21,7 +21,7 @@ export default function Home() {
             <p className="text-white ml-2 font-medium md:text-xl md:w-120 w-70 text-sm mt-1.5"> Experince the finest culinary creations made with locally sourced ingredients and passion.</p>
 
             {/* buttons */}
-            <div className="flex gap-4 mt-2">
+            <div className="flex gap-4 mt-2 ml-2.5">
 
 
               <Link href="/menu">

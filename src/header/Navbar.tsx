@@ -15,9 +15,9 @@ const Navbar = () => {
     <header className='flex h-12 w-full  sticky justify-between top-0 py-1.5 z-50 bg-white shadow-md px-4 items-center'>
         <h2 className='font-bold text-xl ml-2.5 not-md:text-[18px] mt-1 '>Snacksy</h2>
         <nav className='mx-auto flex gap-4  font-medium not-md:hidden mt-1'>
-            <Link href="">Home</Link>
+            <Link href="/">Home</Link>
             <Link href="">About</Link>
-            <Link href="">Admin</Link>
+            <Link href="/admin">Admin</Link>
             
         </nav>
 
