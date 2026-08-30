@@ -18,7 +18,7 @@ import edit from "../../../../public/edit-48.png";
 import deleteGif from "../../../../public/delete-100.png";
 
 import Image from 'next/image';
-import { deleteMenuAction, } from '../../../../action/create-menu';
+import { deleteMenuAction, editMenuAction } from '../../../../action/create-menu';
 
 
 import {
@@ -77,12 +77,114 @@ const main =async (props: Props) => {
       <TableCell className="font-medium">${item.price}</TableCell>
       <TableCell className="text-right flex justify-end ">
         
+<Dialog>
+  <DialogTrigger
+    render={
+      <Button variant="outline" className="cursor-pointer">
+        <Image src={edit} height={25} width={25} alt="edit" />
+      </Button>
+    }
+  />
 
-        <Link href={`/admin/main/create/${item.id}`}>
+  <DialogContent className="sm:max-w-sm">
+
+    <form action={editMenuAction}>
+
+      <input
+        type="hidden"
+        name="id"
+        value={item.id}
+      />
+
+      <DialogHeader>
+        <DialogTitle>Edit Menu Item</DialogTitle>
+
+        <DialogDescription>
+          Make changes to your menu item here.
+        </DialogDescription>
+      </DialogHeader>
+
+      <FieldGroup>
+
+        <Field>
+          <Label htmlFor={`item-name-${item.id}`}>
+            Name
+          </Label>
+
+          <Input
+            id={`item-name-${item.id}`}
+            name="name"
+            defaultValue={item.name}
+          />
+        </Field>
+
+        <Field>
+          <Label htmlFor={`item-desc-${item.id}`}>
+            Description
+          </Label>
+
+          <Input
+            id={`item-desc-${item.id}`}
+            name="description"
+            defaultValue={item.description}
+          />
+        </Field>
+
+        <Field>
+          <Label htmlFor={`item-price-${item.id}`}>
+            Price
+          </Label>
+
+          <Input
+            id={`item-price-${item.id}`}
+            name="price"
+            type="number"
+            defaultValue={item.price}
+          />
+        </Field>
+
+        <input
+          type="hidden"
+          name="category"
+          value={item.category}
+        />
+
+        <input
+          type="hidden"
+          name="image"
+          value={item.imageUrl}
+        />
+
+      </FieldGroup>
+
+      <DialogFooter>
+
+        <DialogClose
+          render={
+            <Button type="button" variant="outline">
+              Cancel
+            </Button>
+          }
+        />
+
+        <Button type="submit">
+          Save changes
+        </Button>
+
+      </DialogFooter>
+
+    </form>
+
+  </DialogContent>
+</Dialog>
+
+
+
+        {/* <Link href={`/admin/main/create/${item.id}`}>
         <Button variant='outline' className='cursor-pointer'>
           <Image src={edit} height={25} width={25} alt="edit"/>
         </Button>
-        </Link>
+        </Link> */}
         
 
         <form action={deleteMenuAction}>

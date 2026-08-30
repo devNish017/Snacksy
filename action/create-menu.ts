@@ -60,22 +60,8 @@ export const createMenuAction = async (initialState: CreatemenuFormState, formDa
 
   try {
 
-    if(id){
-     const menu= await prisma.menuItem.update({
-      where:{
-        id
-      },
-        data:{
-       name: result.data.name,
-         description: result.data.description,
-         price: result.data.price,
-         category: result.data.category,
-         imageUrl: result.data.image || "",
-     
-      }
-     })
-    }
-    else{
+    
+    
     const menu = await prisma.menuItem.create({
       data: {
         name: result.data.name,
@@ -85,9 +71,9 @@ export const createMenuAction = async (initialState: CreatemenuFormState, formDa
         imageUrl: result.data.image || "",
       },
     });
-  
+
     console.log("✅ DATABASE SAVED:", menu);
-    }
+  
 } catch (error) {
     console.log("❌ PRISMA ERROR:", error);
 
@@ -138,57 +124,48 @@ export const deleteMenuAction =async(formData :FormData)=>{
 
 // edit page 
 
-//  export const editMenuAction = async( formData:FormData)=>{
+ export const editMenuAction = async (formData: FormData) => {
 
-//   const id =formData.get("id") as string
-    
-//   const result = formSchema.safeParse({
-//      name: formData.get("name") as string,
-//      description: formData.get("description") as string,
-//      price: formData.get("price") as string,
-//      category: formData.get("category") as string,
-//      image: formData.get("image") as string,
-//    });
-//    if(!result.success){
-//      if (!result.success) {
-//      console.log("❌ VALIDATION ERROR:", result.error.flatten().fieldErrors);
+  const id = formData.get("id") as string;
 
-//      return {
-//        errors: result.error.flatten().fieldErrors,
-//      };
-//    }
-//    }
-//    try{
-//    await prisma.menuItem.update({
-//      where:{
-//        id
-//      },
-//      data:{
-//        name: result.data.name,
-//          description: result.data.description,
-//          price: result.data.price,
-//          category: result.data.category,
-//          imageUrl: result.data.image || "",
-//      }
-    
-//    })
-//   }
-//    catch (error) {
+  console.log("🔥 EDIT ACTION CALLED");
+  console.log("ID:", id);
 
-//     console.log("UPDATE ERROR:", error)
+  const result = formSchema.safeParse({
+    name: formData.get("name") as string,
+    description: formData.get("description") as string,
+    price: formData.get("price") as string,
+    category: formData.get("category") as string,
+    image: formData.get("image") as string,
+  });
 
-//     if (error instanceof Error) {
-//       return {
-//         errors: {
-//           formError: [error.message],
-//         },
-//       }
-//     }
-//   }
-  
+  if (!result.success) {
+    console.log("❌ VALIDATION ERROR:", result.error.flatten().fieldErrors);
+    return;
+  }
 
-//    revalidatePath("/admin/main")
+  try {
 
-  
-   
-//  }
+    const updatedItem = await prisma.menuItem.update({
+      where: {
+        id: id
+      },
+      data: {
+        name: result.data.name,
+        description: result.data.description,
+        price: result.data.price,
+        category: result.data.category,
+        imageUrl: result.data.image || "",
+      }
+    });
+
+    console.log("✅ UPDATED:", updatedItem);
+
+  } catch (error) {
+    console.log("❌ UPDATE ERROR:", error);
+    return;
+  }
+
+  revalidatePath("/admin/main");
+  redirect("/admin/main");
+};

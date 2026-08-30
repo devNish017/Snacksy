@@ -17,7 +17,9 @@ const Navbar = () => {
         <nav className='mx-auto flex gap-4  font-medium not-md:hidden mt-1'>
             <Link href="/">Home</Link>
             <Link href="">About</Link>
-            <Link href="/admin">Admin</Link>
+            <Link href="">Menu</Link>
+            <Link href="">Dineout</Link>
+            <Link href="/admin/main/create">Admin</Link>
             
         </nav>
 
