@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ShoppingCart } from 'lucide-react';
 import {
   Show,
@@ -12,6 +12,19 @@ import useCartStore from '@/store/cartStore';
 
 const Navbar = () => {
     // const cart=[1,2,3];
+
+const [hasOrders, setHasOrders] = useState(false) 
+useEffect(() => {
+  const checkOrders = async () => {
+    const response = await fetch("/api/orders/exists")
+    const data = await response.json()
+
+    setHasOrders(data.hasOrders)
+  }
+
+  checkOrders()
+}, [])
+
     const totalItems = useCartStore((state) =>
   state.cart.reduce((total, item) => total + item.quantity, 0)
 )
@@ -23,7 +36,12 @@ const Navbar = () => {
             <Link href="/">Home</Link>
             <Link href="">About</Link>
             <Link href="/user/menu">Menu</Link>
-            <Link href="">Dineout</Link>
+            {hasOrders 
+            && 
+            ( 
+            <Link href="/user/orders"> Orders </Link> 
+            )}
+            
             <Link href="/admin/main/create">Admin</Link>
             
         </nav>

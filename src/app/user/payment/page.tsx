@@ -7,6 +7,7 @@ import useCartStore from "@/store/cartStore"
 
 const Page = () => {
   const cart = useCartStore((state) => state.cart)
+  const clearCart = useCartStore((state) => state.clearCart)
 
   const totalAmount = cart.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -36,9 +37,34 @@ const Page = () => {
       description: "Food Order",
       order_id: order.id,
 
-      handler: function (response: any) {
-        console.log("PAYMENT SUCCESS:", response)
-      },
+      handler: async function (response: any) {
+  console.log("PAYMENT SUCCESS:", response)
+
+  const verifyResponse = await fetch("/api/payment/verify", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      ...response,
+      cart,
+      totalAmount,
+    }),
+  })
+
+  const result = await verifyResponse.json()
+
+console.log("VERIFY STATUS:", verifyResponse.status)
+console.log("VERIFY RESULT:", result)
+
+if (result.success) {
+  clearCart()
+  alert("Payment successful")
+  window.location.href = "/user/orders"
+} else {
+  alert(result.message)
+}
+},
     }
 
     const razorpay = new window.Razorpay(options)
