@@ -22,7 +22,7 @@ const formSchema= z.object({
     description:z.string().min(1,{message:"Description is required"}),
     price:z.coerce.number().min(1,{message:"Price is required"}),
     category:z.string().min(1,{message:"Category is required"}),
-    image:z.string().url({message:"Image must be a valid url"}).optional().or(z.literal(""))
+    image:z.string().url({message:"Image must be a valid url"})
 })
 
 export const createMenuAction = async (initialState: CreatemenuFormState, formData: FormData) => {
@@ -68,7 +68,7 @@ export const createMenuAction = async (initialState: CreatemenuFormState, formDa
         description: result.data.description,
         price: result.data.price,
         category: result.data.category,
-        imageUrl: result.data.image || "",
+        imageUrl: result.data.image ,
       },
     });
 

@@ -1,3 +1,4 @@
+"use client"
 import Link from 'next/link'
 import React from 'react'
 import { ShoppingCart } from 'lucide-react';
@@ -7,9 +8,13 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/nextjs";
+import useCartStore from '@/store/cartStore';
 
 const Navbar = () => {
-    const cart=[1,2,3];
+    // const cart=[1,2,3];
+    const totalItems = useCartStore((state) =>
+  state.cart.reduce((total, item) => total + item.quantity, 0)
+)
   return (
     <>
     <header className='flex h-12 w-full  sticky justify-between top-0 py-1.5 z-50 bg-white shadow-md px-4 items-center'>
@@ -17,7 +22,7 @@ const Navbar = () => {
         <nav className='mx-auto flex gap-4  font-medium not-md:hidden mt-1'>
             <Link href="/">Home</Link>
             <Link href="">About</Link>
-            <Link href="">Menu</Link>
+            <Link href="/user/menu">Menu</Link>
             <Link href="">Dineout</Link>
             <Link href="/admin/main/create">Admin</Link>
             
@@ -29,13 +34,15 @@ const Navbar = () => {
 
   <div className='flex '>
        <div className='relative'>
+        <Link href="/user/cart">
         <ShoppingCart  className="text-gray-700 mr-6 mt-1.5  " />
         {
-        cart.length>0
+        totalItems>0
         &&    
-        <span className=' bg-red-500 text-white rounded-full px-1 py-.5 absolute right-2 top-1 text-[10px] '>{cart.length}</span>
+        <span className=' bg-red-500 text-white rounded-full px-1 py-.5 absolute right-2 top-1 text-[10px] '>{totalItems}</span>
 
         }
+        </Link>
         </div>
         
         {/* {Auth user} */}
