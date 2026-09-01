@@ -1,0 +1,98 @@
+
+
+
+[
+  {
+    "name": "Margherita Pizza",
+    "description": "Classic cheese and tomato pizza",
+    "price": 199,
+    "category": "Pizza",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/pizza_HoOEZ20g_j.jpg?updatedAt=1788102325006"
+  },
+  {
+    "name": "Veg Burger",
+    "description": "Crispy veg patty with fresh vegetables",
+    "price": 149,
+    "category": "Burger",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/burger.jpg"
+  },
+  {
+    "name": "White Sauce Pasta",
+    "description": "Creamy white sauce pasta",
+    "price": 179,
+    "category": "Pasta",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/Pasta_QQXohUlwV.jpg?updatedAt=1788098766447"
+  }
+,  {
+    "name": "Caesar Salad",
+    "description": "Fresh romaine lettuce with Caesar dressing",
+    "price": 129,
+    "category": "Salad",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/salad.jpg"
+  },
+  {
+    "name": "Gulab Jamun",
+    "description": "Soft and spongy Indian sweet soaked in sugar syrup",
+    "price": 99,
+    "category": "Dessert",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/gulabjamun.jpg"
+  },
+  {
+    "name": "Mango Smoothie",
+    "description": "Refreshing mango smoothie made with fresh mangoes",
+    "price": 149,
+    "category": "Beverages",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/mango.jpg"
+  },
+  {
+    "name": "Dosa",
+    "description": "Crispy South Indian dosa served with chutney and sambar",
+    "price": 120,
+    "category": "Breakfast",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/sangam-sharma-hJzG6jqApTM-unsplash.jpg"
+  },
+  {
+    "name": "Sandwich",
+    "description": "Freshly prepared sandwich with vegetables and cheese",
+    "price": 100,
+    "category": "Snacks",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/sandwich.jpg"
+  },
+  {
+    "name": "Shahi Paneer",
+    "description": "Rich and creamy paneer cooked in a royal Indian gravy",
+    "price": 220,
+    "category": "Main Course",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/shahi%20paneer.jpg"
+  },
+  {
+    "name": "Chocolate Cake",
+    "description": "Soft and moist chocolate cake with rich chocolate flavor",
+    "price": 180,
+    "category": "Dessert",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/ckae.jpg"
+  },
+  
+  {
+    "name": "French Fries",
+    "description": "Crispy golden french fries seasoned with mild spices",
+    "price": 90,
+    "category": "Snacks",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/fries.jpg"
+  },
+  {
+    "name": "Taco",
+    "description": "Crunchy taco filled with fresh vegetables, cheese and flavorful sauces",
+    "price": 150,
+    "category": "Snacks",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/taco.jpg"
+  },
+  {
+    "name": "Cold Coffee",
+    "description": "Chilled creamy coffee topped with a smooth frothy layer",
+    "price": 130,
+    "category": "Beverages",
+    "imageUrl": "https://ik.imagekit.io/9v7doxcii/cold%20coffe.jpg"
+  }
+]
+

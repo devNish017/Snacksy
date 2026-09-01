@@ -24,7 +24,7 @@ export default function Home() {
             <div className="flex gap-4 mt-2 ml-2.5">
 
 
-              <Link href="/menu">
+              <Link href="user/menu">
                 <Button size="lg" variant="outline">
                   View Menu <ChevronRight className="ml-1" />
                 </Button>

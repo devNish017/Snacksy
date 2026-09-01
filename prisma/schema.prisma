@@ -23,13 +23,13 @@ model MenuItem {
 
 model Order {
   id                String      @id @default(cuid())
+  userId            String
   totalAmount       Float
   razorpayOrderId   String      @unique
   razorpayPaymentId String      @unique
   status            String      @default("PAID")
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
-  userId            String
   items             OrderItem[]
 
   @@map("orders")

@@ -13,7 +13,7 @@ const page = async () => {
         Our Menu
       </h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 md:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-auto md:grid-cols-4 gap-5 mx-5">
 
         {items.map((item) => (
           item.imageUrl && (
