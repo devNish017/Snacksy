@@ -1,7 +1,8 @@
-
+import Image from "next/image"
 import { auth } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"
 import { prisma } from "@/lib/prisma"
+import paid from "../../../../public/paid.png"
 
 const OrdersPage = async () => {
   const { userId } = await auth()
@@ -35,7 +36,7 @@ const OrdersPage = async () => {
   return (
     <div className="min-h-screen p-5">
       <h1 className="text-3xl font-bold mb-6">
-        My Orders
+         Order History
       </h1>
 
       <div className="space-y-6">
@@ -44,27 +45,7 @@ const OrdersPage = async () => {
             key={order.id}
             className="border rounded-lg p-5 shadow-sm"
           >
-            <div className="flex justify-between mb-4">
-              <div>
-                <h2 className="font-bold">
-                  Order #{order.id}
-                </h2>
-
-                <p className="text-gray-500 text-sm">
-                  {order.createdAt.toLocaleString()}
-                </p>
-              </div>
-
-              <div className="text-right">
-                <p className="font-bold text-lg">
-                  ₹{order.totalAmount}
-                </p>
-
-                <p className="text-green-600 font-semibold">
-                  {order.status}
-                </p>
-              </div>
-            </div>
+            
 
             <div className="space-y-3">
               {order.items.map((item) => (
@@ -73,6 +54,9 @@ const OrdersPage = async () => {
                   className="flex justify-between border-t pt-3"
                 >
                   <div>
+                    <img src={item.imageUrl} alt={item.name} width={80} height={80}
+                    className="object-cover rounded-md"
+                    />
                     <p className="font-semibold">
                       {item.name}
                     </p>
@@ -90,10 +74,45 @@ const OrdersPage = async () => {
             </div>
 
             <div className="border-t mt-4 pt-4 flex justify-between font-bold">
-              <span>Total</span>
+              <span>Total Amount</span>
               <span>₹{order.totalAmount}</span>
             </div>
-          </div>
+
+            <br/>
+            <hr/>
+
+
+<div className="flex justify-between mb-4 mt-4 pb-8 relative ">
+              <div>
+                <h2 className="font-bold text-xl">
+                  Order Details
+                </h2>
+                <p className="font-bold text-xl">
+                  Order id:  <span className="font-normal text-sm">#{order.id}</span>
+                </p>
+
+                <p className="text-gray-500 text-sm">
+                  {order.createdAt.toLocaleString()}
+                </p>
+              </div>
+
+              <div className="text-right my-auto">
+                <p className="font-bold text-xl  ">
+                  ₹{order.totalAmount}
+                </p>
+                
+                
+                <p className="text-green-600 font-semibold">
+                  {/* {order.status} */}
+                  <Image src={paid} alt="Checked" height={80} width={80}
+                   className="inline-block ml-2 absolute top-12 -right-3 opacity-80 " />
+                </p>
+                </div>
+              </div>
+            </div>
+
+
+          
         ))}
       </div>
     </div>

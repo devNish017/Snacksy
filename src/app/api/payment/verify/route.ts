@@ -56,6 +56,7 @@ export async function POST(req: Request) {
             name: item.name,
             price: item.price,
             quantity: item.quantity,
+            imageUrl: item.imageUrl,
           })),
         },
       },

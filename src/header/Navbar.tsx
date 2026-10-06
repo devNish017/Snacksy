@@ -10,6 +10,13 @@ import {
 } from "@clerk/nextjs";
 import useCartStore from '@/store/cartStore';
 
+import logo from "../../public/logo.png"
+
+import ModeToggle from "@/components/ModeToggle"
+import Image from 'next/image';
+import MobileMenu from './MobileMenu';
+
+
 const Navbar = () => {
     // const cart=[1,2,3];
 
@@ -30,8 +37,10 @@ useEffect(() => {
 )
   return (
     <>
-    <header className='flex h-12 w-full  sticky justify-between top-0 py-1.5 z-50 bg-white shadow-md px-4 items-center'>
-        <h2 className='font-bold text-xl ml-2.5 not-md:text-[18px] mt-1 '>Snacksy</h2>
+    <header className='flex h-12 w-full  sticky justify-between top-0 py-1.5 z-50 bg-background text-foreground border-b border-border shadow-md px-4 items-center'>
+        {/* <h2 className='font-bold text-xl ml-2.5 not-md:text-[18px] mt-1 '>Snacksy</h2> */}
+       <MobileMenu/>
+        <Image src={logo} alt='Snacksy-logo' height={120} width={160} className="w-40 h-30 max-sm:w-32 max-sm:h-12 md:mr-3" />
         <nav className='mx-auto flex gap-4  font-medium not-md:hidden mt-1'>
             <Link href="/">Home</Link>
             <Link href="">About</Link>
@@ -45,15 +54,19 @@ useEffect(() => {
             <Link href="/admin/main/create">Admin</Link>
             
         </nav>
-
-        <input className='mt-1.5 w-2/3 mr-2 md:w-64 h-6 border rounded-sm px-3  outline not-md:hidden border-black '
+        
+       
+        <input className='mt-1.5 w-2/3 mr-2 md:w-64 h-6 border rounded-sm px-3  outline not-md:hidden border-foreground text-foreground '
          type="search" name="" id=""  placeholder='search items'/>
+
+         
   
 
   <div className='flex '>
+    <ModeToggle/>
        <div className='relative'>
         <Link href="/user/cart">
-        <ShoppingCart  className="text-gray-700 mr-6 mt-1.5  " />
+        <ShoppingCart  className="text-foreground mr-6 mt-1.5  " />
         {
         totalItems>0
         &&    
