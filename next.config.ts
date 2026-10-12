@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
 
   outputFileTracingIncludes: {
-    "/*": ["./src/generated/prisma/**/*"],
+    "/api/**/*": ["./src/generated/prisma/**/*"],
+    "/**/*": ["./src/generated/prisma/**/*"],
   },
 };
 
