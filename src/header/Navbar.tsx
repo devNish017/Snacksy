@@ -40,7 +40,7 @@ useEffect(() => {
     <header className='flex h-12 w-full  sticky justify-between top-0 py-1.5 z-50 bg-background text-foreground border-b border-border shadow-md px-4 items-center'>
         {/* <h2 className='font-bold text-xl ml-2.5 not-md:text-[18px] mt-1 '>Snacksy</h2> */}
        <MobileMenu/>
-        <Image src={logo} alt='Snacksy-logo' height={120} width={160} className="w-40 h-30 max-sm:w-32 max-sm:h-12 md:mr-3" />
+        <Image src={logo} alt='Snacksy-logo' height={120} width={160} className="w-40 h-17 max-sm:w-32 max-sm:h-12 md:mr-3" />
         <nav className='mx-auto flex gap-4  font-medium not-md:hidden mt-1'>
             <Link href="/">Home</Link>
             <Link href="">About</Link>
